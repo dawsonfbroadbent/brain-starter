@@ -12,6 +12,7 @@ This repository is the owner's personal context store, shared by every AI tool t
 | A specific fact | Brain search (`brain` MCP server: `query`, then `get` the result), then open the cited record |
 | Something that used to be true | Search with `collections: ["brain-history"]`, or `history/` |
 | Inactive records | Search with `collections: ["brain-archive"]`, or `archive/` |
+| Optional add-ons (background sync, chat capture, autopilot) | `setup/add-ons.md`. Build one only when the owner asks |
 
 **Approved content is what's on `main`.** Only the owner merges to `main`. The search index is built from `main` only, and its default collection holds only `status: current` records, so default search results are approved and current. A working copy can be on a review branch with unmerged edits: outside of maintenance work, take facts from search, not from the working tree.
 

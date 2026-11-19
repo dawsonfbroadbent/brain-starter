@@ -107,7 +107,7 @@ A working setup reads `brain-bootstrap/context/map.md`, runs `query`, opens a re
 |---|---|
 | Remember something | Tell Claude Code or Codex in this repo: *"brain: I started a pottery class on Tuesdays."* It files a proposal ([`system/prompts/propose.md`](../system/prompts/propose.md)). Chat apps without file access write the proposal as a block for you to save or paste |
 | Apply proposals | Weekly, in Claude Code in this repo: *"consolidate the brain"* (the `brain-consolidate` skill). Review the PR, then merge |
-| Update search | Automatic after merges (post-merge hook), or run `system/scripts/publish.sh` |
+| Update search | Automatic when `main` changes on this machine (post-merge hook), so after merging on github.com, `git pull` on `main`. Or run `system/scripts/publish.sh`. To automate the pull, see the background sync add-on in [`add-ons.md`](add-ons.md) |
 | Check the repo | `node system/scripts/check.mjs` |
 
 ## Undo everything

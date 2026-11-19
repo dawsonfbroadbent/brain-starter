@@ -55,6 +55,14 @@ Prefer doing it by hand? Follow [`setup/README.md`](setup/README.md).
 
 More in [`setup/README.md`](setup/README.md#7-everyday-use).
 
+## Optional add-ons (not built)
+
+The starter keeps setup simple. These three are described in [`setup/add-ons.md`](setup/add-ons.md) so your AI can build any of them when you ask: *"Build the background sync add-on from `setup/add-ons.md`."*
+
+- **Background sync:** search updates by itself after you merge a PR on github.com. Without it, run `git pull` on `main`.
+- **Chat capture:** "brain: …" files a proposal from Claude Desktop or any MCP client, not only Claude Code and Codex.
+- **Autopilot:** proposals are consolidated on a schedule into a PR for you to merge, with an optional weekly digest. Auto-merging is possible but means facts reach `main` without your review.
+
 ## What's inside
 
 | Path | Holds |

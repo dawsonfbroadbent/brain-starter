@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# After a merge or `git pull` lands on main, republish so search matches main.
+# Enabled by: git config core.hooksPath system/scripts/hooks. Never blocks the merge.
+[ "$(git symbolic-ref --short -q HEAD)" = "main" ] || exit 0
+"$(git rev-parse --show-toplevel)/system/scripts/publish.sh" || echo "post-merge: publish failed; run system/scripts/publish.sh by hand" >&2
+exit 0

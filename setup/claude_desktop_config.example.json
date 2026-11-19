@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "brain": {
+      "command": "/ABSOLUTE/PATH/TO/node",
+      "args": [
+        "/ABSOLUTE/PATH/TO/brain/system/scripts/mcp-serial.mjs",
+        "--",
+        "/ABSOLUTE/PATH/TO/node",
+        "/ABSOLUTE/PATH/TO/qmd/bin/qmd",
+        "--index",
+        "brain",
+        "mcp"
+      ]
+    }
+  }
+}

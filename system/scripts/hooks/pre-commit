@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Local guardrail (bypassable with --no-verify, so it's a seatbelt, not a lock).
+# Enable it once per clone:  git config core.hooksPath system/scripts/hooks
+#  1. Blocks direct commits on main. Changes go through a branch and a pull request; your merge is the approval.
+#  2. Blocks secret-looking file names (.env, *.pem, *.key, ...) and symlinks.
+set -uo pipefail
+die() { echo "pre-commit: $*" >&2; exit 1; }
+
+branch=$(git symbolic-ref --short -q HEAD || true)
+git_dir=$(git rev-parse --git-dir)
+if [ "$branch" = "main" ] && [ ! -f "$git_dir/MERGE_HEAD" ] && git rev-parse -q --verify HEAD >/dev/null; then
+  die "direct commits to main are blocked. Create a branch (git checkout -b maint/$(date +%F)) and open a pull request."
+fi
+
+git ls-files -s | grep -q '^120000 ' && die "symlinks are not allowed in this repo"
+
+bad=$(git diff --cached --name-only --diff-filter=ACMR | grep -E '(^|/)(\.env(\..*)?|.*\.(pem|key|p12|pfx|token)|id_rsa.*|id_ed25519.*|.*credentials.*\.json)$' | grep -v '\.env\.example$' || true)
+[ -z "$bad" ] || die "secret-looking file staged: $bad. Secrets never go in the brain."
+exit 0

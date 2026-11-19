@@ -173,6 +173,7 @@ function run(root) {
     const isReadme = basename(rel) === "README.md";
     if (!rel.startsWith("system/templates/")) checkLinks(root, rel, readFileSync(join(root, rel), "utf8"), fail);
     if (isReadme) continue;
+    if (/^inbox\/processed\/.*-DIFF-SUMMARY\.md$/.test(rel)) continue; // consolidation PR bodies: no frontmatter
     if (rel.startsWith("context/")) {
       const rec = read(root, rel);
       if (rec.error) fail(rel, rec.error); else { checkContext(root, rel, rec, fail); contexts++; }

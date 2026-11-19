@@ -7,7 +7,7 @@
 // withNativeStdoutRedirectedToStderr). Any response the server writes in that window goes to stderr and
 // the client waits forever, which happens when an agent sends `get` alongside the first `query` on a cold
 // server. Holding each request until the previous one is answered means nothing else is answered while a
-// query is loading models. Regression check: `mcp-check.mjs --concurrent` (fails on bare QMD, passes here).
+// query is loading models.
 //
 // Protocol: newline-delimited JSON-RPC (MCP stdio). Client requests (method + id) are queued; client
 // notifications and client responses pass straight through. Server output passes straight through; the

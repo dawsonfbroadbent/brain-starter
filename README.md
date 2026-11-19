@@ -17,8 +17,10 @@ main branch ──► publish.sh ──► local search index (QMD) ──► MC
 
 ```text
 "brain: I started a new job"  ──►  proposal in inbox/  ──►  consolidate on a branch  ──►  pull request  ──►  you merge  ──►  searchable
-     (you, in any chat)              (unapproved)            (records + history + context)   (you review)     (= approval)
+ (you, in Claude Code or Codex)      (unapproved)            (records + history + context)   (you review)     (= approval)
 ```
+
+Filing a proposal needs an agent with file and git access (Claude Code, Codex). Chat apps without file access, like Claude Desktop, write the proposal as a Markdown block for you to save into `inbox/proposals/` or paste into a Claude Code session.
 
 ## The 3 rules
 
@@ -26,7 +28,7 @@ main branch ──► publish.sh ──► local search index (QMD) ──► MC
 2. **AI proposes; you approve through pull requests.** AIs never edit facts directly. They file proposals, consolidation turns those into a PR, and your merge is the approval. Nothing reaches search until it's on `main`.
 3. **Plain text, so any AI can read it.** Markdown and YAML in Git. No database or vendor lock-in. Open it in any editor or in Obsidian, and use it from any AI tool.
 
-## Quickstart (5 minutes)
+## Quickstart (about 15 minutes of setup plus a ~2 GB model download, then the interview at your own pace)
 
 1. Click **Use this template → Create a new repository** and make it **Private**. It will hold personal information.
 2. Clone it and open the folder in Claude Code (or Codex, or any AI coding agent).
@@ -48,8 +50,10 @@ Prefer doing it by hand? Follow [`setup/README.md`](setup/README.md).
 ## Everyday use
 
 - **Ask:** "Using my brain, who is Jordan and what did we last talk about?" → the answer cites `crm/people/person-jordan-sample.md`.
-- **Remember:** "brain: Jordan referred a florist who needs an ordering site." → a proposal lands in `inbox/proposals/`.
+- **Remember:** in Claude Code or Codex, "brain: Jordan referred a florist who needs an ordering site." → a proposal lands in `inbox/proposals/`.
 - **Review weekly:** in Claude Code, "consolidate the brain" → one plan, one PR, you merge.
+
+More in [`setup/README.md`](setup/README.md#7-everyday-use).
 
 ## What's inside
 

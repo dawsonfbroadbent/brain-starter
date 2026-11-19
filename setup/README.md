@@ -22,7 +22,7 @@ cd ~/brain
 git config core.hooksPath system/scripts/hooks   # blocks direct commits to main; republishes after merges
 ```
 
-Optional: in your repo's **Settings → Branches**, protect `main` and require the `check` status check. Then nothing reaches `main` without a pull request.
+Optional: in your repo's **Settings → Branches**, protect `main` and require the `check` status check. Then nothing reaches `main` without a pull request. On a private repo this needs a paid GitHub plan (Pro or above). On GitHub Free, the pre-commit hook above is your guardrail.
 
 ## 3. Install QMD (local search)
 
@@ -38,11 +38,11 @@ If `npm install -g` asks for `sudo`, install into a folder you own instead:
 
 ```bash
 npm install --prefix ~/.local/share/ai-brain/tools/qmd @tobilu/qmd@2.8.3
-export QMD="node $HOME/.local/share/ai-brain/tools/qmd/node_modules/@tobilu/qmd/bin/qmd"
-$QMD pull
+export PATH="$HOME/.local/share/ai-brain/tools/qmd/node_modules/.bin:$PATH"
+qmd pull
 ```
 
-(Keep that `QMD` variable set when running `publish.sh`, or put it in your shell profile.)
+(Add that `export PATH=…` line to your shell profile, such as `~/.zshrc`, so `qmd` works in new terminals, in `publish.sh`, and in the shells your AI agent runs.)
 
 ## 4. Publish and index
 
@@ -105,7 +105,7 @@ A working setup reads `brain-bootstrap/context/map.md`, runs `query`, opens a re
 
 | You want to | Do this |
 |---|---|
-| Remember something | Tell any connected AI: *"brain: I started a pottery class on Tuesdays."* It files a proposal ([`system/prompts/propose.md`](../system/prompts/propose.md)) |
+| Remember something | Tell Claude Code or Codex in this repo: *"brain: I started a pottery class on Tuesdays."* It files a proposal ([`system/prompts/propose.md`](../system/prompts/propose.md)). Chat apps without file access write the proposal as a block for you to save or paste |
 | Apply proposals | Weekly, in Claude Code in this repo: *"consolidate the brain"* (the `brain-consolidate` skill). Review the PR, then merge |
 | Update search | Automatic after merges (post-merge hook), or run `system/scripts/publish.sh` |
 | Check the repo | `node system/scripts/check.mjs` |
